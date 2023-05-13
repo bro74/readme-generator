@@ -1,15 +1,15 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
+const path = require('path');
 const generateMarkdown = require('./utils/generateMarkdown')
 
 // TODO: Create an array of questions for user input
-const questions = ['What was your motivation?', 'Why did you build this project?', 'What problem does it solve?', 'What did you learn?'];
+// const questions = ['What was your motivation?', 'Why did you build this project?', 'What problem does it solve?', 'What did you learn?'];
 
-console.log(questions)
+// console.log(questions)
 
-inquirer
-.prompt([
+var questions = [
     {
         type: "input",
         message:"What is the title of your project?",
@@ -36,8 +36,9 @@ inquirer
         type: "list",
         message: "What license does your project have?",
         name: "license",
-        choices: ["N/A", "MIT License", "Apache License 2.0", "Creative Commons Zerov1.0 Universal", "GNU GPLv3"],
-   }, 
+        choices: ["MIT", "Apache", "Creative Commons Zerov1.0 Universal", "GNU GPLv3"],
+        // lookupbadge sheild io acryonym
+   },  
    {
         type: "input",
         message: "Who contributed to this project?",
@@ -64,22 +65,24 @@ inquirer
     message: "How can someone reach you with any questions about your project?",
     name: "QuestionInstructions",
 },
- ])
- .then((response) =>
-
-    writeToFile('READMEgenerated.md', response)
-)
+ ];
+ 
  
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    const readMe = generateMarkdown(data);
-    fs.writeFile(fileName, readMe, (err) =>
-        err ? console.error(err) : console.log('File written successfully')
-    );
+    // const readMe = generateMarkdown(data);
+    return fs.writeFileSync(path.join(process.cwd(),fileName),data);
 }
 // TODO: Create a function to initialize app
-function init() { }
+function init() {
+    inquirer.prompt(questions).then((response)=>{
+        console.log("README Generated");
+        writeToFile("READMEGeneartor.md",generateMarkdown({...response}));
+    })
+ }
+
+
 
 // Function call to initialize app
 init();
