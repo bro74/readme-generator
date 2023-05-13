@@ -1,7 +1,7 @@
 # README.md-generator 
 
 ## Description
-This is readme.md generator app built using a starter code. This app will generate a professional README file with markdown.js directly in the terminal. The user is a developer who wants a README generator so they can quickly create a professional README for a new project. To use this README generateor be sure to have installed and node.js and npm i inquirer@8.2.4.
+This is readme.md generator app built using a starter code. This app will generate a professional README file with markdown.js directly in the terminal. The user is a developer who wants a README generator so they can quickly create a professional README for a new project. To use this README generateor be sure to have installed and node.js and npm i inquirer@8.2.4. Be sure to 'open preview' when viewing the READMEGenerator.md.
 
 ### Technologiees 
 This app uses node.js and npm i inquirer@8.2.4.
@@ -19,6 +19,7 @@ This app uses node.js and npm i inquirer@8.2.4.
 7. Navigate to the correct directory and folder
 8. Open the index.js file using node index.js
 9. Follow the generator's prompt within the integrated terminal 
+10. Open preview to view READMEGenerator.md
 
 ###### Liscense 
 
